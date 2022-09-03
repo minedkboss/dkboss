@@ -873,6 +873,7 @@ class taskCog(commands.Cog):
 	def __init__(self, bot, intents):
 		self.bot = bot
 		self.checker = True
+        self.bot = intents
 
 		self.main_task.start()
 
@@ -1266,6 +1267,7 @@ class taskCog(commands.Cog):
 class mainCog(commands.Cog): 
 	def __init__(self, bot, intents):
 		self.bot = bot
+        self.bot = intents
 
 	################ 보탐봇 입장 ################ 	
 	@commands.has_permissions(manage_messages=True)
@@ -3883,8 +3885,8 @@ class mainCog(commands.Cog):
 class IlsangDistributionBot(commands.AutoShardedBot):
 	def __init__(self):
 		intents = discord.Intents.default()
-		intents.members = True
-		super().__init__(command_prefix=[""], help_command=None, intents=intents)
+        intents.members = True
+        super().__init__(command_prefix=[""], help_command=None, intents=intents)
 
 	def run(self):
 		super().run(access_token, reconnect=True)
