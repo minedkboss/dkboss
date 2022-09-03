@@ -3882,8 +3882,6 @@ class mainCog(commands.Cog):
 
 class IlsangDistributionBot(commands.AutoShardedBot):
 	def __init__(self):
-		intents = discord.Intents.default() # or .all() if you ticked all, that is easier
-		intents.members = True # If you ticked the SERVER MEMBERS INTENT
 		super().__init__(command_prefix=[""], intents=intents)
 
 	def run(self):
