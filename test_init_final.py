@@ -870,7 +870,7 @@ async def get_guild_channel_info(bot):
 	return text_channel_name, text_channel_id, voice_channel_name, voice_channel_id
 
 class taskCog(commands.Cog): 
-	def __init__(self, bot):
+	def __init__(self, bot, intents):
 		self.bot = bot
 		self.checker = True
 
@@ -1264,7 +1264,7 @@ class taskCog(commands.Cog):
 		boss_task = asyncio.Task(self.boss_check())
 
 class mainCog(commands.Cog): 
-	def __init__(self, bot):
+	def __init__(self, bot, intents):
 		self.bot = bot
 
 	################ 보탐봇 입장 ################ 	
@@ -3882,7 +3882,9 @@ class mainCog(commands.Cog):
 
 class IlsangDistributionBot(commands.AutoShardedBot):
 	def __init__(self):
-		super().__init__(command_prefix=[""], help_command=None)
+		 intents = discord.Intents.default()
+        intents.members = True
+        super().__init__(command_prefix=[""], help_command=None, intents=intents)
 
 	def run(self):
 		super().run(access_token, reconnect=True)
@@ -4296,3 +4298,4 @@ ilsang_distribution_bot : IlsangDistributionBot = IlsangDistributionBot()
 ilsang_distribution_bot.add_cog(mainCog(ilsang_distribution_bot))
 ilsang_distribution_bot.add_cog(taskCog(ilsang_distribution_bot))
 ilsang_distribution_bot.run()
+
